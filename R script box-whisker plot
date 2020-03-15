@@ -1,0 +1,20 @@
+> indonesia_<-read.csv('indonesia_.csv')
+> malaysia<-read.csv('malaysia.csv')
+> 
+> # prepare the data
+> bright5 <- indonesia_$bright_ti5
+> brighti5 <- malaysia$bright_ti5
+> # gererate normal distribution with same mean and sd
+> bright5_norm <- rnorm(50,mean=mean(bright5, na.rm=TRUE), sd=sd(bright5, na.rm=TRUE))
+> brighti5_norm <- rnorm(50,mean=mean(brighti5, na.rm=TRUE), sd=sd(brighti5, na.rm=TRUE))
+> 
+> boxplot(bright5, bright5_norm, brighti5, brighti5_norm,
++     	main = "Comparision Bright_ti5 for Indonesia and Malaysia",
++     	at = c(1,2,4,5),
++     	names = c("IND", "normal", "MY", "normal"),
++     	las = 2,
++     	col = c("orange","red"),
++     	border = "brown",
++     	horizontal = TRUE,
++     	notch = TRUE
++ )
