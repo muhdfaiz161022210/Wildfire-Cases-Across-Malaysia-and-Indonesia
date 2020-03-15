@@ -1,0 +1,112 @@
+> malaysia<-read.csv("C:/Users/User/Documents/R/malaysia.csv")
+> indonesia<-read.csv("C:/Users/User/Documents/R/indonesia.csv")
+> summary(malaysia)
+    latitude       longitude       bright_ti4   
+ Min.   :0.858   Min.   : 99.7   Min.   :208.0  
+ 1st Qu.:2.879   1st Qu.:103.0   1st Qu.:313.3  
+ Median :3.523   Median :103.9   Median :332.6  
+ Mean   :3.870   Mean   :108.1   Mean   :329.2  
+ 3rd Qu.:5.190   3rd Qu.:114.0   3rd Qu.:340.0  
+ Max.   :7.347   Max.   :119.3   Max.   :367.0  
+                                                
+      scan            track              acq_date    
+ Min.   :0.3200   Min.   :0.3600   2016-04-20:  621  
+ 1st Qu.:0.3900   1st Qu.:0.3800   2016-03-27:  564  
+ Median :0.4400   Median :0.4400   2019-03-17:  562  
+ Mean   :0.4561   Mean   :0.4714   2016-04-19:  539  
+ 3rd Qu.:0.5000   3rd Qu.:0.5500   2016-04-08:  490  
+ Max.   :0.8000   Max.   :0.7800   2019-03-16:  466  
+                                   (Other)   :61077  
+    acq_time    satellite instrument    confidence
+ Min.   : 438   N:64319   VIIRS:64319   h: 1649   
+ 1st Qu.: 600                           l: 2345   
+ Median : 638                           n:60325   
+ Mean   :1030                                     
+ 3rd Qu.:1801                                     
+ Max.   :1941                                     
+                                                  
+    version    bright_ti5         frp         
+ Min.   :1   Min.   :235.8   Min.   :  0.000  
+ 1st Qu.:1   1st Qu.:288.4   1st Qu.:  2.000  
+ Median :1   Median :292.4   Median :  4.100  
+ Mean   :1   Mean   :291.9   Mean   :  7.008  
+ 3rd Qu.:1   3rd Qu.:296.8   3rd Qu.:  7.500  
+ Max.   :1   Max.   :360.8   Max.   :460.500  
+                                              
+      type       
+ Min.   :0.0000  
+ 1st Qu.:0.0000  
+ Median :0.0000  
+ Mean   :0.2696  
+ 3rd Qu.:0.0000  
+ Max.   :3.0000  
+                 
+> summary(indonesia)
+    latitude           longitude        bright_ti4   
+ Min.   :-10.89622   Min.   : 95.04   Min.   :208.0  
+ 1st Qu.: -4.70321   1st Qu.:105.39   1st Qu.:322.5  
+ Median : -2.30036   Median :112.91   Median :334.2  
+ Mean   : -2.77215   Mean   :113.73   Mean   :331.8  
+ 3rd Qu.: -0.09779   3rd Qu.:118.53   3rd Qu.:341.7  
+ Max.   :  5.81898   Max.   :140.98   Max.   :367.0  
+                                                     
+      scan            track              acq_date     
+ Min.   :0.3200   Min.   :0.3600   2019-09-11: 14309  
+ 1st Qu.:0.3900   1st Qu.:0.3800   2019-09-13: 11963  
+ Median :0.4300   Median :0.4400   2019-09-14: 11886  
+ Mean   :0.4557   Mean   :0.4713   2019-09-12:  9835  
+ 3rd Qu.:0.5000   3rd Qu.:0.5500   2019-09-10:  9665  
+ Max.   :0.8000   Max.   :0.7800   2019-09-19:  9439  
+                                   (Other)   :616579  
+    acq_time      satellite  instrument     confidence
+ Min.   : 312.0   N:683676   VIIRS:683676   h: 23230  
+ 1st Qu.: 534.0                             l: 41257  
+ Median : 623.0                             n:619189  
+ Mean   : 947.4                                       
+ 3rd Qu.:1725.0                                       
+ Max.   :2001.0                                       
+                                                      
+    version    bright_ti5         frp         
+ Min.   :1   Min.   :235.0   Min.   :  0.000  
+ 1st Qu.:1   1st Qu.:289.8   1st Qu.:  2.500  
+ Median :1   Median :294.2   Median :  4.700  
+ Mean   :1   Mean   :294.1   Mean   :  8.263  
+ 3rd Qu.:1   3rd Qu.:299.8   3rd Qu.:  8.500  
+ Max.   :1   Max.   :380.0   Max.   :954.000  
+                                              
+      type       
+ Min.   :0.0000  
+ 1st Qu.:0.0000  
+ Median :0.0000  
+ Mean   :0.1536  
+ 3rd Qu.:0.0000  
+ Max.   :3.0000  
+                 
+> summary(malaysia$bright_ti4)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  208.0   313.3   332.6   329.2   340.0   367.0 
+> hist(malaysia$bright_ti4,breaks=500,xlab="Brightness I4",main="Histogram of Brightness I4")
+
+> hist(malaysia$bright_ti4,breaks=1000,xlab="Brightness I4",main="Histogram of Brightness I4")
+> hist(malaysia$bright_ti4,breaks=300,xlab="Brightness I4",main="Histogram of Brightness I4")
+> hist(malaysia$bright_ti4,breaks=100,xlab="Brightness I4",main="Histogram of Brightness I4")
+> hist(malaysia$bright_ti4,breaks=500,xlab="Brightness I4",main="Histogram of Brightness I4")
+> bright_density<-density(malaysia$bright_ti4)
+> plot(bright_density)
+> bright_densitylow<-density(malaysia$bright_ti4,adjust=0.1)
+> plot(bright_densitylow)
+> bright_densityhigh<-density(malaysia$bright_ti4,adjust=10)
+> plot(bright_densityhigh)
+> i5<-density(malaysia$bright_ti5)
+> plot(bright_density)
+> lines(i5)
+> indoi4<-density(indonesia$bright_ti4)
+> indoi4high<-density(indonesia$bright_ti4,adjust=10)
+> indoi4low<-density(indonesia$bright_ti4,adjust=0.1)
+
+> lines(indoi4)
+> plot(bright_densitylow)
+> lines(indoi4low)
+> plot(bright_densityhigh)
+> lines(indoi4high)
+
